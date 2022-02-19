@@ -7,5 +7,21 @@
  * 6. Adjust UI states accordingly
  * 7. Bonus: change button CTA to indicate if it's the first joke or a "next" one
  */
+const API_ENPOINT = 'https://icanhazdadjoke.com/';
 
-const API_ENDPOINT = 'https://icanhazdadjoke.com/';
+const jokeReq = new XMLHttpRequest();
+
+function getDadJoke() {
+    jokeReq.open('GET', API_ENPOINT);
+    jokeReq.setRequestHeader('Accept', 'application/json');
+    jokeReq.responseType = 'json';
+    jokeReq.onload = function () {
+        console.log('Success', jokeReq.response);
+    };
+    jokeReq.onerror = function () {
+        console.log('An Error');
+    };
+    jokeReq.send();
+}
+
+getDadJoke();
